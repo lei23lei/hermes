@@ -1,0 +1,34 @@
+services:
+  - type: worker
+    name: hermes-gateway
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    disk:
+      name: hermes-data
+      mountPath: /opt/data
+      sizeGB: 5
+    envVars:
+      - key: HERMES_HOME
+        value: /opt/data
+
+      # LLM provider — set values in Render dashboard (never commit secrets)
+      - key: MODEL_API_KEY
+        sync: false
+      - key: MODEL_BASE_URL
+        sync: false
+      - key: MODEL_NAME
+        sync: false
+
+      # WeChat (Weixin) credentials — copy from ~/.hermes/weixin/accounts/
+      # WEIXIN_ACCOUNT_ID : filename stem of the .json file, e.g. 6bf2192788fb@im.bot
+      # WEIXIN_TOKEN      : value of "token" field in that file
+      # WEIXIN_USER_ID    : value of "user_id" field in that file
+      # WEIXIN_BASE_URL   : value of "base_url" field (optional)
+      - key: WEIXIN_ACCOUNT_ID
+        sync: false
+      - key: WEIXIN_TOKEN
+        sync: false
+      - key: WEIXIN_USER_ID
+        sync: false
+      - key: WEIXIN_BASE_URL
+        sync: false
