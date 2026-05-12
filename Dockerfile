@@ -4,7 +4,7 @@ RUN pip install --no-cache-dir uv
 
 WORKDIR /app
 COPY pyproject.toml .
-RUN uv pip install --system "hermes-agent>=0.13.0"
+RUN uv pip install --system "hermes-agent @ git+https://github.com/NousResearch/hermes-agent.git@v2026.5.7"
 
 ENV HERMES_HOME=/opt/data
 
