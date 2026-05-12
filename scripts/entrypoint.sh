@@ -69,4 +69,4 @@ PYEOF
   fi
 fi
 
-exec hermes gateway start
+exec hermes gateway run
